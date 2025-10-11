@@ -7,8 +7,8 @@ A simple **ATM** simulation program written in **Java**, designed to demonstrate
 ## Output Screenshots
 
 <p align="center">
-  <img src="screenshot.png" alt="ATM Screenshot" width="400">
-  <img src="screenshot2.png" alt="ATM Screenshot" width="400">
+  <img src="screenshot.png" alt="ATM Screenshot" width="600">
+  <img src="screenshot2.png" alt="ATM Screenshot" width="600">
 </p>
 
 ---
