@@ -23,6 +23,11 @@ public class BankAccount {
         return accountNumber;
     }
 
+    
+    public int getPin() {
+        return pin;
+    }
+
     public boolean validatePIN(int inputPin) {
         return this.pin == inputPin;
     }

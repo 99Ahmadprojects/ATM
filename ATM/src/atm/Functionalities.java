@@ -9,6 +9,9 @@ package atm;
  * @author hh
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -18,11 +21,6 @@ abstract class Functionalities {
     protected Map<String, BankAccount> accounts = new HashMap<>();
     protected BankAccount currentAccount;
 
-    public Functionalities() {
-        accounts.put("12345", new BankAccount("12345", 1111, 800.00));
-        accounts.put("67890", new BankAccount("67890", 2222, 500.00));
-    }
-
     public abstract void start();
     protected abstract void login(Scanner scanner);
     protected abstract void showMenu(Scanner scanner);
@@ -31,11 +29,50 @@ abstract class Functionalities {
 // Concrete class implementing ATM functionality
 class SimpleATMSystem extends Functionalities {
 
+    // Path to the data file
+    private static final String FILE_PATH = "accounts.txt";
+
+    // Constructor loads accounts from the file
+    public SimpleATMSystem() {
+        loadAccountsFromFile();
+    }
+
+    // Method load account data from text file
+    private void loadAccountsFromFile() {
+        try (Scanner fileScanner = new Scanner(new File(FILE_PATH))) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    String accNum = parts[0];
+                    int pin = Integer.parseInt(parts[1]);
+                    double balance = Double.parseDouble(parts[2]);
+                    accounts.put(accNum, new BankAccount(accNum, pin, balance));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: Account data file not found! Please create 'accounts.txt'.");
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Invalid number format in account data file.");
+        }
+    }
+
+    // Method write the updated account data back to the file
+    private void updateAccountsFile() {
+        try (PrintWriter writer = new PrintWriter(new File(FILE_PATH))) {
+            for (BankAccount account : accounts.values()) {
+                writer.println(account.getAccountNumber() + "," + account.getPin() + "," + account.getBalance());
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: Could not save account data.");
+        }
+    }
+
     @Override
     public void start() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("            === WELCOME TO ATM ===");
-        System.out.println(" ===Develped by Mir Ahmad Shah & Wajahat Ali khan===\n");
+        System.out.println(" === Develped by Mir Ahmad Shah & Wajahat Ali khan ===\n");
         login(scanner);
     }
 
@@ -82,6 +119,7 @@ class SimpleATMSystem extends Functionalities {
                         double withdrawAmount = scanner.nextDouble();
                         scanner.nextLine();
                         currentAccount.withdraw(withdrawAmount);
+                        updateAccountsFile(); // Save changes to file
                         System.out.println("Your amount Successfully Withdrawn!");
                         break;
                     case 3:
@@ -89,6 +127,7 @@ class SimpleATMSystem extends Functionalities {
                         double depositAmount = scanner.nextDouble();
                         scanner.nextLine();
                         currentAccount.deposit(depositAmount);
+                        updateAccountsFile(); // Save changes to file
                         System.out.println("Your amount Successfully Deposited!");
                         break;
                     case 4:
