@@ -78,6 +78,7 @@ ATM/
 - **Java SE 8+**
 - **HashMap & Map Collections Framework**
 - **OOP Principles**
+- **Exception Handling and File Handling**
 - **Scanner (for console input)**
 
 ---
