@@ -36,6 +36,7 @@ The system uses **Java Collections (HashMap & Map)** to store and manage multipl
 | **HashMap & Map Interface** | Store and retrieve bank accounts efficiently using account numbers as keys. |
 | **Control Flow** | Manage user input and ATM menu operations with conditionals and loops. |
 | **Exception Handling** | Handle invalid inputs gracefully using try-catch blocks. |
+| **File Handling** | Performing operations such as creating, reading and writing files and directories. |
 
 ---
 
@@ -60,13 +61,14 @@ ATM/
 
 1. The program starts and displays a login prompt.
 2. The user enters their **account number** and **PIN**.
-3. After successful login, a menu appears with available operations:
+3. Check Authorization of account and PIN.
+4. After successful login, a menu appears with available operations:
    - Check Balance
    - Deposit Money
    - Withdraw Money
    - Exit
-4. The program validates transactions (e.g., sufficient funds for withdrawals).
-5. All changes are updated in real time for that session.
+5. The program validates transactions (e.g., sufficient funds for withdrawals).
+6. All changes are updated in real time for that session.
 
 ---
 
