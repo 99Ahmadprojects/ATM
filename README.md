@@ -83,3 +83,19 @@ ATM/
 
 ---
 
+## 🕒 Project Timeline
+
+| 📅 Week | 🧩 Task Description | 📆 Date |
+|:--------:|:--------------------|:--------:|
+| **Week 7 – Week 8** | Developed a **console-based ATM** application in Java, implementing core banking operations like deposit, withdraw, and balance inquiry. | — |
+| **Week 9** | 🧠 **Mid-Term Exam** — paused project development for assessments. | 🗓️ *24-10-2025* |
+| **Week 10** | Integrated a **basic GUI-based ATM** in Java using Swing to enhance user interaction and experience. | 🗓️ *31-10-2025* |
+
+---
+
+### 🏗️ Progress Overview
+✅ Console Version Completed  
+🟡 GUI Integration In Progress  
+
+
+
