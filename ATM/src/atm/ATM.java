@@ -4,6 +4,8 @@
  */
 package atm;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author hh
@@ -11,8 +13,7 @@ package atm;
 
 public class ATM {
     public static void main(String[] args) {
-        SimpleATMSystem atm = new SimpleATMSystem();
-        atm.start();
+        SwingUtilities.invokeLater(SimpleATMGUI::new);
     }
 }
 
