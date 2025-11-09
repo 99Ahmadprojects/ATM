@@ -1,6 +1,6 @@
 # 💳 ATM (Automated Teller Machine)
 
-A simple **ATM** simulation program written in **Java**, designed to demonstrate key programming concepts such as **OOP (Object-Oriented Programming)**, **encapsulation**, **Programming Fundamentals**, and **user interaction** through a **console-based interface**.
+A simple **ATM** simulation program written in **Java**, designed to demonstrate key programming concepts such as **OOP (Object-Oriented Programming)**, **encapsulation**, **Programming Fundamentals**, **user interaction**, **GUI**, and **Event Handling** through a **Graphical User Interface(GUI)**.
 
 ---
 
