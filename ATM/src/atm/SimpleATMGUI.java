@@ -2,17 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/*
+ * GUI Implementation of ATM with Event Handling Concepts
+ */
 package atm;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.*; // Importing event package
 import java.io.*;
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+
 
 /**
  *
@@ -21,6 +25,16 @@ import java.util.Scanner;
 
 
 
+
+/**
+ * SimpleATMGUI.java
+ * Demonstrates Java Event Handling concepts:
+ * - Event and Event Sources
+ * - Delegation Model
+ * - ActionEvent handling
+ * - Inner class listeners
+ * - Anonymous inner class listeners
+ */
 public class SimpleATMGUI {
     private final JFrame frame;
     private final CardLayout cardLayout;
@@ -42,10 +56,11 @@ public class SimpleATMGUI {
 
     private DefaultTableModel adminTableModel;
 
+    // Constructor
     public SimpleATMGUI() {
         loadAccountsFromFile();
 
-        frame = new JFrame("ATM System (GUI)");
+        frame = new JFrame("ATM System (Event-Driven GUI)");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 420);
         frame.setLocationRelativeTo(null);
@@ -106,7 +121,6 @@ public class SimpleATMGUI {
         title.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(title, BorderLayout.NORTH);
 
-        // Center panel
         JPanel form = new JPanel(new GridLayout(3, 1, 15, 15));
         form.setBackground(new Color(245, 247, 250));
 
@@ -129,16 +143,40 @@ public class SimpleATMGUI {
         btnPanel.add(loginBtn);
         btnPanel.add(exitBtn);
         form.add(btnPanel);
-
         panel.add(form, BorderLayout.CENTER);
 
-        loginBtn.addActionListener(e -> attemptLogin());
-        exitBtn.addActionListener(e -> frame.dispose());
+        // ---------- EVENT HANDLING SECTION ----------
+
+        // (1) The Delegation Model:
+        // Source → JButton (loginBtn)
+        // Listener → inner class / anonymous class
+        // Event → ActionEvent
+        loginBtn.addActionListener(new LoginActionHandler()); // Inner class listener
+
+        // (2) Anonymous inner class listener example
+        exitBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose(); // Event handler action
+            }
+        });
+
+        // (3) Event triggered on pressing Enter key inside PIN field
         pinField.addActionListener(e -> attemptLogin());
 
         return panel;
     }
 
+    // ---------- INNER CLASS LISTENER ----------
+    // Demonstrating The Delegation Model with Inner Class Listener
+    private class LoginActionHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            attemptLogin();
+        }
+    }
+
+    // Utility functions
     private JPanel labeledField(String label, JComponent field) {
         JPanel p = new JPanel(new BorderLayout(6, 6));
         p.setBackground(new Color(245, 247, 250));
@@ -166,6 +204,7 @@ public class SimpleATMGUI {
         button.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
     }
 
+    // Event Handler logic for login
     private void attemptLogin() {
         String acc = accountField.getText().trim();
         String pinTxt = new String(pinField.getPassword());
@@ -233,6 +272,7 @@ public class SimpleATMGUI {
         south.add(logoutBtn);
         p.add(south, BorderLayout.SOUTH);
 
+        // Anonymous inner classes demonstrating ActionEvent handling
         checkBtn.addActionListener(e -> showBalance());
         withdrawBtn.addActionListener(e -> withdrawMoney());
         depositBtn.addActionListener(e -> depositMoney());
@@ -305,6 +345,7 @@ public class SimpleATMGUI {
         bottom.add(logoutBtn);
         p.add(bottom, BorderLayout.SOUTH);
 
+        // Delegation Model with Anonymous Listeners
         addBtn.addActionListener(e -> openAddUserDialog());
         refreshBtn.addActionListener(e -> refreshAdminTable());
         logoutBtn.addActionListener(e -> cardLayout.show(mainPanel, "LOGIN"));
@@ -356,6 +397,7 @@ public class SimpleATMGUI {
         }
     }
 }
+
 
 
 

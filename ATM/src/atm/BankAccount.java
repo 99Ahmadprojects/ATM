@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/*
+ * A simple class to model bank account behavior.
+ */
 package atm;
 
 /**
@@ -9,6 +13,12 @@ package atm;
  * @author hh
  */
 
+
+
+/**
+ * Demonstrates procedural programming (step-by-step logic) 
+ * compared to event-driven behavior handled in the GUI.
+ */
 public class BankAccount {
     private final String accountNumber;
     private final int pin;
