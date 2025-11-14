@@ -13,12 +13,6 @@ package atm;
  * @author hh
  */
 
-
-
-/**
- * Demonstrates procedural programming (step-by-step logic) 
- * compared to event-driven behavior handled in the GUI.
- */
 public class BankAccount {
     private final String accountNumber;
     private final int pin;
@@ -46,6 +40,10 @@ public class BankAccount {
         return balance;
     }
 
+    public synchronized void setBalance(double newBalance) {
+        this.balance = newBalance;
+    }
+
     public synchronized void deposit(double amount) {
         if (amount <= 0) throw new IllegalArgumentException("Deposit amount must be positive!");
         balance += amount;
@@ -57,4 +55,5 @@ public class BankAccount {
         balance -= amount;
     }
 }
+
 
