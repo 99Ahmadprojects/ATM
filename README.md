@@ -1,6 +1,7 @@
-# 💳 ATM (Automated Teller Machine)
+# 🏧 ATM Management System (Java Swing + MySQL)
 
-A simple **ATM** simulation program written in **Java**, designed to demonstrate key programming concepts such as **OOP (Object-Oriented Programming)**, **encapsulation**, **Programming Fundamentals**, **user interaction**, **GUI**, and **Event Handling** through a **Graphical User Interface(GUI)**.
+A fully functional **ATM Management System** built using **Java Swing**, **Event-Driven Programming**, and **MySQL Database Integration**.  
+This project demonstrates clean UI design, structured OOP principles, and real-world ATM functionalities such as withdrawals, deposits, balance checking, and admin account management.
 
 ---
 
@@ -14,89 +15,135 @@ A simple **ATM** simulation program written in **Java**, designed to demonstrate
 
 ---
 
-## 🧠 Project Overview
+## 🚀 Features
 
-The **ATM** project allows users to perform essential banking operations, including:
+### 👤 **User Features**
+- Login using **Account Number + PIN**
+- Check current balance
+- Withdraw funds (with validation)
+- Deposit funds
+- Real-time balance updates
 
-- 🔑 User authentication using account numbers and PINs  
-- 💰 Balance inquiry  
-- 💵 Cash withdrawal  
-- 💳 Cash deposit  
-- 🔁 Account management through a secure and interactive console menu  
+### 🔐 **Admin Features**
+- Login using **Admin username + password**
+- Add new user accounts
+- View all users in a live table
+- Refresh account data
+- Secure logout
 
-The system uses **Java Collections (HashMap & Map)** to store and manage multiple user accounts efficiently.
+### 🧱 **Backend / System Features**
+- Event-Driven GUI using Java Swing
+- JDBC-based MySQL integration
+- Two database tables: `users` and `admin`
+- Secure PIN/password handling
+- Modular and clean Java code structure
+- Automatic exception handling & validation
 
 ---
 
-## 🧩 Key Concepts Demonstrated
+## 🛠️ Technologies Used
 
-| Concept | Description |
-|----------|-------------|
-| **Classes & Objects** | Encapsulate account data and ATM logic into structured classes. |
-| **Encapsulation** | Sensitive account data (PINs, balances) is private and accessed via methods. |
-| **HashMap & Map Interface** | Store and retrieve bank accounts efficiently using account numbers as keys. |
-| **Control Flow** | Manage user input and ATM menu operations with conditionals and loops. |
-| **Exception Handling** | Handle invalid inputs gracefully using try-catch blocks. |
-| **File Handling** | Performing operations such as creating, reading and writing files and directories. |
+| Layer | Technology |
+|------|-------------|
+| Programming Language | **Java (JDK 8+)** |
+| GUI Framework | **Java Swing (Event-Driven)** |
+| Database | **MySQL / MariaDB** |
+| JDBC Driver | **MySQL Connector/J** |
+| IDE (optional) | Apache NetBeans / IntelliJ / Eclipse |
 
 ---
 
-## 🗂️ Project Structure
+## 📁 Project Structure
 
 ```
 
-ATM/
+ATM-System/
 │
 ├── src/
-│ ├── BankAccount.java # Represents individual bank accounts
-│ ├── ATM.java # Entry point to start the program
-│ └── Functionalities.java # Main class handling user interface and operations
+│ ├── atm/
+│ │ ├── ATM.java # Main class / entry point
+│ │ ├── BankAccount.java # Data model (OOP)
+│ │ ├── SimpleATMGUI.java # Full GUI + Event handling
 │
-└── README.md # Project documentation (this file)
+├── README.md
+└── /lib
+└── mysql-connector-j-8.x.x.jar
+│
+└── README.md # Project documentation
 
 ```
 
 ---
 
-## ⚙️ How It Works
+## 🔌 JDBC Installation (Required)
 
-1. The program starts and displays a login prompt.
-2. The user enters their **account number** and **PIN**.
-3. Check Authorization of account and PIN.
-4. After successful login, a menu appears with available operations:
-   - Check Balance
-   - Deposit Money
-   - Withdraw Money
-   - Exit
-5. The program validates transactions (e.g., sufficient funds for withdrawals).
-6. All changes are updated in real time for that session.
+Download MySQL Connector/J:
+ https://dev.mysql.com/downloads/connector/j/
 
----
+Choose Platform Independent (or any OS – JAR works everywhere)
 
+Download the ZIP Archive
 
-## 🧱 Technologies Used
+Extract the ZIP
 
-- **Java SE 8+**
-- **HashMap & Map Collections Framework**
-- **OOP Principles**
-- **Exception Handling and File Handling**
-- **Scanner (for console input)**
+Add the file mysql-connector-j-8.x.x.jar to your project:
 
----
+In NetBeans:
 
-## 🕒 Project Timeline
+```
+Right-click Project → Properties → Libraries → Add JAR/Folder
+```
 
-| 📅 Week | 🧩 Task Description | 📆 Date |
-|:--------:|:--------------------|:--------:|
-| **Week 7 – Week 8** | Developed a **console-based ATM** application in Java, implementing core banking operations like deposit, withdraw, and balance inquiry. | — |
-| **Week 9** | 🧠 **Mid-Term Exam** — paused project development for assessments. | 🗓️ *24-10-2025* |
-| **Week 10** | Integrated a **basic GUI-based ATM** in Java using Swing to enhance user interaction and experience. | 🗓️ *31-10-2025* |
+## ▶️ Running the Application
 
----
+Import the project into NetBeans
 
-### 🏗️ Progress Overview
-✅ Console Version Completed  
-🟡 GUI Integration In Progress  
+Set up your MySQL database (run the SQL above)
+
+Update the DB credentials in SimpleATMGUI.java:
+```
+String url = "jdbc:mysql://localhost:3306/atm_system";
+String user = "root";
+String pass = "";
+```
+
+Run the ATM.java file
 
 
+## 📚 Concepts Demonstrated in This Project
 
+This ATM system implements key lessons from:
+
+### Java Database Programming
+
+- JDBC connections
+
+- Prepared statements
+
+- ResultSets & exception handling
+
+### Database Fundamentals
+
+- Relational structure (tables, rows, keys)
+
+- Domain & integrity constraints
+
+- Keys and key constraints
+
+- Separation of admin and user tables
+
+- Data validation and constraints
+
+### Event-Driven Programming
+
+- Delegation event model
+
+- ActionEvent listeners
+
+- Inner classes & anonymous listeners
+
+- Swing UI workflow
+
+## 🧑‍💻 Developers
+
+**Mir Ahmad Shah & Wajahat Ali Khan**
